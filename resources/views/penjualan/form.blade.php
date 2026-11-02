@@ -24,7 +24,7 @@
         <label>Nama Pelanggan</label>
         <input type="text" name="nama_pelanggan"
             value="{{ old('nama_pelanggan', $penjualan->nama_pelanggan ?? '') }}"
-            required>
+            >
         @error('nama_pelanggan')
             <div style="color:red">{{ $message }}</div>
         @enderror

@@ -1,7 +1,8 @@
 <?php
+
 namespace App\Models;
 
-use luminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Penjualan extends Model
 {
@@ -28,4 +29,3 @@ class Penjualan extends Model
         ];
     }
 }
-

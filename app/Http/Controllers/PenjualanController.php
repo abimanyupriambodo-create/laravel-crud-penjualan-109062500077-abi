@@ -6,12 +6,19 @@ use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
 {
-    public function index()
-    {
-        $penjualan = Penjualan::latest()->get();
+    public function index(Request $request)
+{
+    $keyword = $request->input('search');
 
-        return view('penjualan.index', compact('penjualan'));
-    }
+    $penjualan = Penjualan::when($keyword, function ($query) use ($keyword) {
+        $query->where('kode_transaksi', 'like', "%{$keyword}%")
+              ->orWhere('nama_pelanggan', 'like', "%{$keyword}%");
+    })
+    ->latest()
+    ->get();
+
+    return view('penjualan.index', compact('penjualan', 'keyword'));
+}
 
     public function create()
     {
